@@ -19,6 +19,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 import time
 
+# Change this variables if not running
 Ico1 = "Arduino.ico"
 Ico2 = "Nome_Anime.txt"
 Last_Ep_Dir = "LAST_EPISODE.txt"
