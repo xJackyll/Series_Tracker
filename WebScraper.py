@@ -5,7 +5,7 @@
 # Versione: 3.0
 # Autore: xJackyll
 #
-# Lo script non e' per niente scritto bene e a volte si bugga. Detto questo svolge bene il suo lavoro ed e' molto utile
+# Lo script non e' scritto benissimo e a volte si bugga. Detto questo svolge bene il suo lavoro ed e' molto utile
 # 
 # N.B.  Non modificare lo script se non si ha chiaro cosa si sta facendo 
 
