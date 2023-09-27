@@ -11,4 +11,4 @@ Tips:
 - If you want to change the Tv Show submit the name in the relevant box. The change apply only after reopening the script (the Ep resets to 1)
 - Changes to the episode apply immediately
 - GUI freezes for as long as the chrome page remains open
-
+- I highly recommend using an ad blocker because the site has a large number of ad redirects.
