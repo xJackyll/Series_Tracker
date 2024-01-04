@@ -17,14 +17,17 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 import time
+import os
 
 # Change this variables if not running
 Ico1 = "Arduino.ico"
 Ico2 = "Nome_Anime.txt"
 Last_Ep_Dir = "LAST_EPISODE.txt"
 Nome_Anime_Dir = "Libro_Con_Amaterasu.ico"
-ChromeUser_Dir = "C:\\Users\\user\\AppData\\Local\\Google\\Chrome\\User Data\\Default" # This is an exmple, put your own Chrome User Profile
+ChromeUser_Dir = os.path.join(os.environ['LOCALAPPDATA'], 'Google', 'Chrome', 'User Data', 'Default') # This is an exmple, put your own Chrome User Profile
 
 Open_Text = open(Ico2, "r")
 Nome_Animes = Open_Text.read()
@@ -33,11 +36,17 @@ Open_Text.close()
 NUM_EP = ""
 ics = 0
 
+
 def animesaturn():
-    driver = webdriver.Chrome()
+    options = webdriver.ChromeOptions()
+    options.add_argument("user-data-dir=" + ChromeUser_Dir)
+    options.add_experimental_option("detach", True)
+    options.add_experimental_option("excludeSwitches", ["enable-automation"])
+    driver = webdriver.Chrome(options=options, service=Service(ChromeDriverManager().install()))
+
+    # PAGE SCRAPING
     driver.maximize_window()
     driver.get("https://www.animesaturn.tv")
-
 
 
 def Options():
@@ -49,6 +58,7 @@ def Options():
     Bottone1_pt3 = Button(top, text="Cambia Anime", padx=96, pady=50, command=cambia_anime, fg="black", bg="gold", activebackground="yellow", bd="5", cursor="pirate", font="italic, 15")
     Bottone1_pt3.pack()
 
+
 def bottone_anime_manuali():
     top2 = Toplevel()
     top2.title("Immetti il N° dell'episodio")
@@ -57,6 +67,7 @@ def bottone_anime_manuali():
     Bottone1_pt3 = Button(top2, text="Immetti ep", padx=30, pady=20, command=Get_Num_Ep, fg="black", bg="gold", activebackground="yellow", bd="5", cursor="pirate", font="italic, 15")
     Spazio_Dove_Immettere_Ep.pack()
     Bottone1_pt3.pack()
+
 
 def Get_Num_Ep():
     global ics
@@ -90,14 +101,10 @@ def myclick(NOME):
     N_EP = a.read()
     a.close()
 
-    capa = DesiredCapabilities.CHROME
-    capa["pageLoadStrategy"] = "none"
-
     options = webdriver.ChromeOptions()
     options.add_argument("user-data-dir=" + ChromeUser_Dir)
     options.add_experimental_option("excludeSwitches", ["enable-automation"])
-
-    driver = webdriver.Chrome(options=options)
+    driver = webdriver.Chrome(options=options, service=Service(ChromeDriverManager().install()))
 
     # PAGE SCRAPING
     driver.maximize_window()
