@@ -8,7 +8,7 @@ Before using Series Tracker, make sure you have the following:
 
 1. **Selenium**: Install Selenium by following the instructions [here](https://selenium-python.readthedocs.io/index.html).
 
-2. **Webdriver Manager**: Ensure you have the webdriver-manager module installed. if you don't just --> pip install webdriver-manager.
+2. **Webdriver Manager**: Ensure you have the webdriver-manager module installed. if you don't just `pip install webdriver-manager`.
 
 3. **Configuration**: Modify the variables at the beginning of the script, focusing on the Chrome User Profile Path.
 
